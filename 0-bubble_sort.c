@@ -4,37 +4,30 @@
  * bubble_sort - Sorts an array of integers in ascending order using Bubble sort
  *
  * @array: The array to be sorted
- * @size: Number of elements inside the array
+ * @size: Number of elements in the array
  */
 void bubble_sort(int *array, size_t size)
 {
-    size_t i, j;
-    int temp;
-    int swapped;
+    size_t i, index;
+    int tmp;
 
     if (array == NULL || size < 2)
         return;
 
-    for (i = 0; i < size - 1; i++)
+    for (i = 0; i < size; i++)
     {
-        swapped = 0;
-        for (j = 0; j < size - i - 1; j++)
+        for (index = 0; index < size - 1; index++)
         {
-            if (array[j] > array[j + 1])
+            if (index + 1 < size && array[index] > array[index + 1])
             {
                 /* Swap the elements */
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+                tmp = array[index];
+                array[index] = array[index + 1];
+                array[index + 1] = tmp;
 
                 /* Print the array after each swap */
                 print_array(array, size);
-                swapped = 1;
             }
         }
-
-        /* If no two elements were swapped by inner loop, the array is sorted */
-        if (swapped == 0)
-            break;
     }
 }
