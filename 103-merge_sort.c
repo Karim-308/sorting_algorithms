@@ -1,74 +1,34 @@
 #include "sort.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
- * merge - Merges two subarrays of the given array.
- * @array: The array containing the subarrays to be merged.
- * @tmp: A temporary array used for merging.
- * @start: The starting index of the first subarray.
- * @mid: The ending index of the first subarray.
- * @end: The ending index of the second subarray.
+ * merge - Merges two subarrays into a sorted array
+ * @array: Original array
+ * @tmp: Temporary array for merging
+ * @start: Start index of the subarray
+ * @mid: Middle index of the subarray
+ * @end: End index of the subarray
  */
 void merge(int *array, int *tmp, int start, int mid, int end)
 {
-    int size_left = mid - start + 1;
-    int size_right = end - mid;
+    int i = start, j = mid + 1, k = start;
 
-    // Create temporary arrays
-    int left[size_left];
-    int right[size_right];
-
-    // Copy data to temporary arrays left[] and right[]
-    for (int i = 0; i < size_left; i++)
-        left[i] = array[start + i];
-    for (int j = 0; j < size_right; j++)
-        right[j] = array[mid + 1 + j];
-
-    // Merge the temporary arrays back into array[start..end]
-    int i = 0; // Initial index of first subarray
-    int j = 0; // Initial index of second subarray
-    int k = start; // Initial index of merged subarray
-
-    printf("Merging...\n");
-    printf("[left]: ");
-    print_array(left, size_left);
-    printf("[right]: ");
-    print_array(right, size_right);
-
-    while (i < size_left && j < size_right)
+    while (i <= mid && j <= end)
     {
-        if (left[i] <= right[j])
-        {
-            array[k] = left[i];
-            i++;
-        }
+        if (array[i] <= array[j])
+            tmp[k++] = array[i++];
         else
-        {
-            array[k] = right[j];
-            j++;
-        }
-        k++;
+            tmp[k++] = array[j++];
     }
 
-    // Copy the remaining elements of left[], if there are any
-    while (i < size_left)
-    {
-        array[k] = left[i];
-        i++;
-        k++;
-    }
+    while (i <= mid)
+        tmp[k++] = array[i++];
 
-    // Copy the remaining elements of right[], if there are any
-    while (j < size_right)
-    {
-        array[k] = right[j];
-        j++;
-        k++;
-    }
+    while (j <= end)
+        tmp[k++] = array[j++];
 
-    printf("[Done]: ");
-    print_array(&array[start], size_left + size_right);
+    for (i = start; i <= end; i++)
+        array[i] = tmp[i];
 }
 
 /**
@@ -80,15 +40,15 @@ void merge(int *array, int *tmp, int start, int mid, int end)
  */
 void merge_sort_recursive(int *array, int *tmp, int start, int end)
 {
-	if (start < end)
-	{
-		int mid = (start + end) / 2;
+    if (start < end)
+    {
+        int mid = (start + end) / 2;
 
-		merge_sort_recursive(array, tmp, start, mid);
-		merge_sort_recursive(array, tmp, mid + 1, end);
+        merge_sort_recursive(array, tmp, start, mid);
+        merge_sort_recursive(array, tmp, mid + 1, end);
 
-		merge(array, tmp, start, mid, end);
-	}
+        merge(array, tmp, start, mid, end);
+    }
 }
 
 /**
@@ -99,16 +59,16 @@ void merge_sort_recursive(int *array, int *tmp, int start, int end)
  */
 void merge_sort(int *array, size_t size)
 {
-	int *tmp;
+    int *tmp;
 
-	if (!array || size < 2)
-		return;
+    if (!array || size < 2)
+        return;
 
-	tmp = malloc(sizeof(int) * size);
-	if (!tmp)
-		return;
+    tmp = malloc(sizeof(int) * size);
+    if (!tmp)
+        return;
 
-	merge_sort_recursive(array, tmp, 0, size - 1);
+    merge_sort_recursive(array, tmp, 0, size - 1);
 
-	free(tmp);
+    free(tmp);
 }
