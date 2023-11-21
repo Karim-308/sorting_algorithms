@@ -31,5 +31,6 @@ void merge(int *array, int *tmp, int start, int mid, int end);
 void merge_sort_recursive(int *array, int *tmp, int start, int end);
 void merge_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
+void counting_sort(int *array, size_t size);
 
 #endif
