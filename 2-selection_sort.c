@@ -12,12 +12,14 @@ void selection_sort(int *array, size_t size)
 	size_t i, j, min_index;
 	int temp;
 
-	if (array == NULL || size < 2)
-		return;
+	if (array == NULL ) return;
+	if (size < 2) return;
+		
 
 	for (i = 0; i < size - 1; i++)
 	{
 		min_index = i;
+
 		for (j = i + 1; j < size; j++)
 		{
 			if (array[j] < array[min_index])
@@ -26,7 +28,7 @@ void selection_sort(int *array, size_t size)
 
 		if (min_index != i)
 		{
-			/* Swap the elements */
+			/* Swap the elements after finding the minimum in the inner loop */
 			temp = array[i];
 			array[i] = array[min_index];
 			array[min_index] = temp;
