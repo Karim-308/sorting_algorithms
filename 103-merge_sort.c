@@ -1,6 +1,6 @@
 #include "sort.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
  * merge_sort - Sorts an array of integers in ascending order using
  *              the Merge sort algorithm.
