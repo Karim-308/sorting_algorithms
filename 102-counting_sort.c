@@ -15,7 +15,9 @@ void counting_sort(int *array, size_t size)
 
     /* Find the maximum value in the array */
     int max = array[0];
-    for (size_t i = 1; i < size; i++)
+    size_t i;
+
+    for (i = 1; i < size; i++)
     {
         if (array[i] > max)
             max = array[i];
@@ -23,14 +25,14 @@ void counting_sort(int *array, size_t size)
 
     /* Create and initialize the counting array */
     int *counting_array = malloc(sizeof(int) * (max + 1));
+
     if (counting_array == NULL)
         return;
 
-    for (int i = 0; i <= max; i++)
+    for (i = 0; i <= max; i++)
         counting_array[i] = 0;
 
     /* Count the occurrences of each element in the original array */
-    size_t i;
     for (i = 0; i < size; i++)
         counting_array[array[i]]++;
 
@@ -40,7 +42,7 @@ void counting_sort(int *array, size_t size)
 
     /* Modify the original array based on the counting array */
     int idx = 0;
-    for (int i = 0; i <= max; i++)
+    for (i = 0; i <= max; i++)
     {
         while (counting_array[i] > 0)
         {
