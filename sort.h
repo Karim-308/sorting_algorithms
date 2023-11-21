@@ -27,6 +27,8 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
+void merge_sort_bottom_up(int *array, size_t size);
+void merge(int *left, size_t left_size, int *right, size_t right_size);
 void shell_sort(int *array, size_t size);
 
 #endif
