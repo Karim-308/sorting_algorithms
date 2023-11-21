@@ -11,7 +11,8 @@
 void counting_sort(int *array, size_t size)
 {
     int max = array[0];
-    size_t i;
+    size_t i,j;
+    size_t idx = 0;
     if (array == NULL || size <= 1)
         return;
 
@@ -32,7 +33,7 @@ void counting_sort(int *array, size_t size)
         counting_array[i] = 0;
 
     /* Count the occurrences of each element in the original array */
-    for (i = 0; i < size; i++)
+    for (j = 0; i < size; i++)
         counting_array[array[i]]++;
 
     /* Print the counting array */
@@ -40,8 +41,8 @@ void counting_sort(int *array, size_t size)
     print_array(counting_array, max + 1);
 
     /* Modify the original array based on the counting array */
-    size_t idx = 0;  // Change int to size_t for idx
-    for (size_t i = 0; i <= (size_t)max; i++)  // Use size_t for the loop variable
+
+    for (size_t i = 0; i <= (size_t)max; i++)
     {
         while (counting_array[i] > 0)
         {
