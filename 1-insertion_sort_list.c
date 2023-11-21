@@ -32,6 +32,9 @@ void insertion_sort_list(listint_t **list)
             /* Update the list pointer if needed */
             if (current->prev == NULL)
                 *list = current;
+
+            /* Print the list after each swap */
+            print_list(*list);
         }
 
         current = temp;
