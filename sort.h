@@ -35,5 +35,8 @@ void counting_sort(int *array, size_t size);
 void swap(int *array, int a, int b);
 void sift_down(int *array, size_t size, size_t root, size_t end);
 void heap_sort(int *array, size_t size);
+void quick_sort_hoare(int *array, size_t size);
+void quick_sort_hoare_recursive(int *array, int low, int high, size_t size);
+int hoare_partition(int *array, int low, int high, size_t size);
 
 #endif
