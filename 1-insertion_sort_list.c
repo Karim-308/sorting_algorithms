@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap_nodes - Swaps two nodes in a doubly linked list.
+ * swap_nodes_in - Swaps two nodes in a doubly linked list.
  *
  * @list: A pointer to a doubly linked list
  * @node: The node to be swapped with its previous node
