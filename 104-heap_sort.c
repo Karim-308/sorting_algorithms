@@ -50,10 +50,11 @@ void sift_down(int *array, size_t size, size_t root, size_t end)
  */
 void heap_sort(int *array, size_t size)
 {
+	int i;
 	if (array == NULL || size <= 1)
 		return;
 
-	int i;
+
 
 	/* Build the heap */
 	for (i = size / 2 - 1; i >= 0; i--)
