@@ -44,4 +44,9 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
 void swap_nodes_in(listint_t **list, listint_t *node);
 void shell_sort(int *array, size_t size);
 
+/* New function declarations */
+void radix_sort(int *array, size_t size);
+void countingSort(int *array, size_t size, int exp);
+int getMax(int *array, size_t size);
+
 #endif
