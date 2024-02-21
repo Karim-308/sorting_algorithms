@@ -42,5 +42,6 @@ listint_t *swap_node(listint_t *node, listint_t **list);
 void cocktail_sort_list(listint_t **list);
 void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
 void swap_nodes_in(listint_t **list, listint_t *node);
+void shell_sort(int *array, size_t size);
 
 #endif
